@@ -1,7 +1,7 @@
 @extends('main')
 @section('content')
     
-    <div class="container">
+    <div class="container card">
     <h1 class="mb-5">Gem</h1>
         <div class="mb-4 d-flex justify-content-end">
             <a class="btn btn-primary py-1" href="{{ route('jellewery.create') }}">+ Create</a>

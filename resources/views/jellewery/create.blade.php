@@ -2,7 +2,7 @@
   @extends('main')
 @section('content')
     
-<div class="container">
+<div class="container card">
     <div class="row">
         <div class="col-sm-8 offset-sm-2 py-5">
             <h2 class="text-center mb-5">Create New Jellewery</h2>
