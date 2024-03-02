@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // foreach map filter find some every reduce reduceRight includes
+    let data = [
+     {
+        name: 'Coca Cola',
+        price: 900,
+        quantity: 19
+     },
+
+     {
+        name: 'Speed',
+        price: 800,
+        quantity: 109
+     },
+     {
+        name: 'Shark',
+        price: 1600,
+        quantity: 200
+     },
+
+     {
+        name: 'Red Bull',
+        price: 1500,
+        quantity: 89
+     },
+    ];
+
+    // let mapped = data.map(val => {
+    //     let newObj = JSON.parse(JSON.stringify(val));
+    //     newObj.quantity = newObj.quantity + 20;
+    //     return newObj;
+    // });
+    // console.log(mapped);
+    // console.log(data);
+
+    // let nums = [1,2,3,4,5,6];
+    // let filtered = nums.filter(val => val / 2 === 0)
+  data.reduceRight(function(total, val){
+        return total + val.name.split('').reverse().join('')
+        }, '');
+        let nums = [1,2,3,4,5,6];
+
+        // nums.push(])
+
+</script>
+</html>

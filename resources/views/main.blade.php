@@ -290,7 +290,7 @@
         <!-- Header -->
 
         <!-- Page content -->
-        <div class="container-fluid" style="padding: 10px 0 !important">
+        <div class="container-fluid" style="padding: 0 !important">
             <!-- Table -->
             
                 {{-- Content --}}

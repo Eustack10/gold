@@ -79,7 +79,7 @@
                <div class="row">
                 <div class="col-12 d-flex justify-content-end mt-4">
                     <a type="button" class="btn py-1" href="{{ route('index') }}">Close</a>
-                    <button type="button" class="btn btn-primary py-1" data-dismiss="modal">Create</button>
+                    <a href="{{ route('weight', 1) }}" class="btn btn-primary py-1" data-dismiss="modal">Create</a>
                 </div>
                </div>
             </form>

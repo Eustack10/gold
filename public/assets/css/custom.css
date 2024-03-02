@@ -1,6 +1,6 @@
 .custom-input{
     width: 110px !important;
-    font-size: 16px;
+    font-size: 14px;
     padding:3px 10px;
     border-radius: 5px;
     border-width: 1px;
@@ -51,4 +51,76 @@ input::-webkit-inner-spin-button {
 .lot-card-inner.active{
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     border: 1px solid #fb6340 !important;
+}
+.div{
+    display: flex;
+    flex-direction: column;
+}
+.field{
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+}
+.field p{
+    margin: 0 !important;
+    padding: 5px 10px !important;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    width: fit-content;
+    line-height: normal;
+    text-wrap: nowrap;
+    display: flex;
+    align-items: flex-start;
+}
+.field .form-group{
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.field .form-control{
+    padding: 0 !important;
+    line-height: normal;
+    height: auto !important;
+    padding: 5px !important;
+}
+
+.weight{
+    font-size: 14px;
+    font-weight: 600;
+    /* margin-bottom: 20px; */
+}
+
+hr{
+    margin: 0 !important;
+    margin: 20px 0 !important;
+}
+
+.auto-input{
+    padding: 3px;
+    width: 80px;
+    border: 1px solid rgb(189, 189, 189);
+
+    color: #000;
+    text-align: right;
+    background-color: transparent;
+    outline: none;
+}
+.manual-input{
+    border: 1px solid black;
+
+    text-align: right;
+    padding: 3px;
+    width: 80px !important;
+    background-color: white;
+    color: #344ca9;
+}
+.summary{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.lot{
+    border: 1.5px solid rgba(0,0,0,.2);
+    border-radius: 10px;
 }

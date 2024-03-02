@@ -1,7 +1,7 @@
 @extends('main')
 @section('content')
     
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-3">
         {{-- <div class="row">
             <div class="col-12">
                 <div class="card pt-4 pl-3 pr-2">
@@ -16,236 +16,274 @@
             </div>
         </div> --}}
         <div class="row">
-            <div class="col-sm-9">
-                <div class="row">
-                    <div class="col-3">
-                        <div class="div">
-                            <div class="field">
-                                <p>Metal</p>
-                                <div class="form-group">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">12 Pae</option>
-                                        <option value="">14 Pae</option>
-                                        <option value="">16 Pae</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <p>Price</p>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <p>Category</p>
-                                <div class="form-group">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Shwe Mahar</option>
-                                        <option value="">A Nay mhar</option>
-                                        <option value="">Bay Dar</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <p>Product Type</p>
-
-
-                                <div class="form-group">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Bracelets</option>
-                                        <option value="">Ring</option>
-                                        <option value="">Earing</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <p>Color</p>
-
-
-                                <div class="form-group">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Red</option>
-                                        <option value="">Green</option>
-                                        <option value="">Blue</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <p>Brand</p>
-
-                                
-
-                                <div class="form-group">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">24K</option>
-                                        <option value="">32K</option>
-                                        <option value="">48K</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <p>Size</p>
-
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control"/>
-                                </div>
-                            </div>
+            <div class="col-sm-8">
+                <div class="card p-3 mb-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>Jewelery Net Weight</b>
                         </div>
                     </div>
-                    <div class="col-9">
-                        <div class="row weight mb-4">
-                            <div class="col-3">
-                                Weight
-                            </div>
-                            <div class="col">
-                                Gram
-                            </div>
-                            <div class="col">
-                                Kyat
-                            </div>
-                            <div class="col">
-                                Pae
-                            </div>
-                            <div class="col">
-                                Ywe
-                            </div>
-                            <div class="col-2 text-right">
-                                Amount
+                    <div class="row mt-3">
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Gram</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input">
+                                </div>
                             </div>
                         </div>
-                        <div class="row weight">
-                            <div class="col-3">
-                                Jewellery Net Weight
-                            </div>
-                            <div class="col">
-                                <input type="text" class="manual-input">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col-2 text-right">
-                                {{-- 1234 --}}
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Kyat</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
                             </div>
                         </div>
-                        <hr>
-                        <div class="row weight mb-3">
-                            <div class="col-3">
-                                Net Gold Weight
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="manual-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="manual-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="manual-input">
-                                
-                            </div>
-                            <div class="col-2 text-right">
-                                <input type="text" class="auto-input">
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Pae</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row weight mb-3">
-                            <div class="col-3">
-                                Decrease Gold Weight
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="manual-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="manual-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="manual-input">
-                                
-                            </div>
-                            <div class="col-2 text-right">
-                                <input type="text" class="auto-input">
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Ywe</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
                             </div>
                         </div>
-                        <hr>
-                        <div class="row weight mb-3">
-                            <div class="col-3">
-                                Total Gold Weight
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col-2 text-right">
-                                {{-- <input type="text" class="auto-input"> --}}
-                            </div>
-                        </div>
-
-                        <div class="row weight mb-3">
-                            <div class="col-3">
-                                Total Gems Weight
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
-                                
-                            </div>
-                            <div class="col-2 text-right">
-                                {{-- <input type="text" class="auto-input"> --}}
-                            </div>
-                        </div>
-
-                        <div class="row weight mb-3">
-                            <div class="col-3">
-                                Total Gems Pcs
-                            </div>
-                            <div class="col">
-                                <input type="text" class="auto-input">
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Amount</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=" p-3 mb-3 lot">
+                <div class="card p-3 mb-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>Net Gold Weight</b>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Gram</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Kyat</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Pae</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Ywe</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Amount</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-3 mb-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>Decrease Gold Weight</b>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Gram</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Kyat</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Pae</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Ywe</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Amount</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-3 mb-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>Total Gold Weight</b>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Gram</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Kyat</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Pae</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Ywe</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Amount</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="card p-3 mb-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>Total Gems Weight</b>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Gram</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Kyat</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Pae</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Ywe</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md mb-2 mb-md-0">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Amount</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="0.0" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="card p-3 mb-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>Total Gems Pcs</b>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-md mb-md-0 mb-2">
+                            <div class="row">
+                                <div class="col-7 col-md-12 mb-md-2">Gram</div>
+                                <div class="col-5 col-md-12">
+                                    <input type="number" value="11" class="custom-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="card p-3 mb-3">
                     <div class="d-flex justify-content-end mb-3">
                         <button class="btn btn-primary py-1" data-toggle="modal" data-target="#createLot">+ Add Lot</button>
                     </div>
@@ -264,7 +302,7 @@
     
                             <!-- Modal body -->
                             <div class="modal-body">
-                                {{-- <div class="row">
+                                <div class="row">
                                    
                                     <div class="col-12 col-md-4 lot-card">
                                         <div class="border rounded d-flex flex-column justify-content-between p-3 lot-card-inner" onclick="select(this)">
@@ -430,8 +468,8 @@
                                         </div>
                                     </div>
 
-                                </div> --}}
-                                <div class="table-responsive">
+                                </div>
+                                {{-- <div class="table-responsive">
     
                                 <table class="table">
                                     <thead>
@@ -494,7 +532,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                </div>
+                                </div> --}}
                             </div>
     
                             <!-- Modal footer -->
@@ -505,7 +543,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table mb-5">
+                    {{-- <table class="table mb-5">
                         <thead>
                             <tr>
                                 <td>ID</td>
@@ -533,8 +571,8 @@
     
                             </tr>
                         </tbody>
-                    </table>
-                    {{-- <div class="row">
+                    </table> --}}
+                    <div class="row">
                         <div class="col-12 col-md-4 mb-2">
                             <div class="border rounded d-flex flex-column justify-content-between p-3">
                                 <div class="d-flex justify-content-between">
@@ -656,45 +694,45 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card p-3 summary">
+            <div class="col-sm-4">
+                <div class="card p-3">
                     <div class="row">
                         <div class="col-12">
                             <h4 class="pt-3">Item Pricing</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col mt-2">
+                        <div class="col-6 mt-3">
                             Gold Amount (1+2)
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             <input type="text" disabled value="88,200" class="w-100">
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             Germs Amount
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             <input type="text" disabled value="143,280" class="w-100">
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             Other Cost
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             <input type="text" class="w-100">
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             Workmanship
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             <input type="text" class="w-100">
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             Fixed Amount
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 mt-3">
                             <input type="text" class="w-100">
                         </div>
                     </div>
