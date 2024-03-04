@@ -30,8 +30,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css?v=1') }}" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/v/bs4-4.6.0/dt-2.0.1/fc-5.0.0/fh-4.0.0/r-3.0.0/sl-2.0.0/datatables.min.css" rel="stylesheet">
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css"> --}}
 
-    <style>
+ <style>
         /* * {
             padding: 0;
             margin: 0;
@@ -326,6 +329,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('/assets/js/tbl-responsive.js') }}"></script>
 
+<script src="https://cdn.datatables.net/v/bs4-4.6.0/dt-2.0.1/fc-5.0.0/fh-4.0.0/r-3.0.0/sl-2.0.0/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    
     {{-- ajax setup --}}
     <script>
         $.ajaxSetup({
@@ -344,7 +350,7 @@
         @endif
     </script>
 
-    @yield('script')
+    @yield('scripts')
 </body>
 
 

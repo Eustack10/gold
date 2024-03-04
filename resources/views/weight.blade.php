@@ -16,9 +16,9 @@
             </div>
         </div> --}}
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-md-9">
                 <div class="row">
-                    <div class="col-3">
+                    {{-- <div class="col-3">
                         <div class="div">
                             <div class="field">
                                 <p>Metal</p>
@@ -93,8 +93,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-9">
+                    </div> --}}
+                    <div class="col-12">
                         <div class="row weight mb-4">
                             <div class="col-3">
                                 Weight
@@ -131,8 +131,7 @@
                                 
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
-                                
+                                <input type="text" class="auto-input">        
                             </div>
                             <div class="col-2 text-right">
                                 {{-- 1234 --}}
@@ -247,7 +246,7 @@
                 </div>
                 <div class=" p-3 mb-3 lot">
                     <div class="d-flex justify-content-end mb-3">
-                        <button class="btn btn-primary py-1" data-toggle="modal" data-target="#createLot">+ Add Lot</button>
+                        <button class="btn btn-primary py-1" data-toggle="modal" data-target="#createLot">+ Lot</button>
                     </div>
     
     
@@ -505,7 +504,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table mb-5">
+                    <table class="table mb-5" id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <td>ID</td>
@@ -659,7 +658,7 @@
                     </div> --}}
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <div class="card p-3 summary">
                     <div class="row">
                         <div class="col-12">
@@ -737,7 +736,12 @@
     </div>
 @endsection
 
-@section('script')
+@section('scripts')
+<script>
+    $('#example').DataTable( {
+    responsive: true
+} );
+</script>
     <script>
         const select = el =>{
             let classes = el.classList;

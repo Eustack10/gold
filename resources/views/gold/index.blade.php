@@ -7,7 +7,7 @@
             <a class="btn btn-primary py-1" href="{{ route('admin.gold.create') }}">+ Create</a>
         </div>
         @include('gold.delete')
-        <table class="table">
+        <table class="table" id="example">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -39,6 +39,13 @@
     </div>
 @endsection
 @section('scripts')
+
+
+<script>
+    $('#example').DataTable( {
+    responsive: true
+} );
+</script>
     <script>
         function deleteGold(id){
             $('#delete').modal('show');

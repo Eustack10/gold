@@ -6,7 +6,7 @@
         <div class="mb-4 d-flex justify-content-end">
             <a class="btn btn-primary py-1" href="{{ route('jellewery.create') }}">+ Create</a>
         </div>
-        <table class="table">
+        <table class="table" id="example">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -51,4 +51,14 @@
         </table>
 
     </div>
+@endsection
+
+@section('scripts')
+    
+
+<script>
+    $('#example').DataTable( {
+    responsive: true
+} );
+</script>
 @endsection

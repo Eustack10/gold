@@ -7,7 +7,7 @@
             <a class="btn btn-primary py-1" href="{{ route('admin.counter.create') }}">+ Create</a>
         </div>
         @include('counter.delete')
-        <table class="table">
+        <table class="table" id="example">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -39,6 +39,12 @@
     </div>
 @endsection
 @section('scripts')
+
+<script>
+    $('#example').DataTable( {
+    responsive: true
+} );
+</script>
     <script>
         function deleteCounter(id){
             $('#delete').modal('show');

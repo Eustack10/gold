@@ -7,7 +7,7 @@
             <a class="btn btn-primary py-1" href="{{ route('admin.gem.create') }}">+ Create</a>
         </div>
         @include('gem.delete')
-        <table class="table">
+        <table class="table" id="example">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -42,10 +42,17 @@
 @endsection
 @section('scripts')
     <script>
+        $('#example').DataTable( {
+        responsive: true
+    } );
+    </script>
+    <script>
         function deleteGem(id){
             $('#delete').modal('show');
             let delForm = document.querySelector('#delForm');
             delForm.action = `{{ route('admin.gem.index') }}/${id}`;
         }
     </script>
+
+    
 @endsection
