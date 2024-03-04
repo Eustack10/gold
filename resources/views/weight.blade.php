@@ -238,15 +238,46 @@
                             <div class="col-3">
                                 Total Gems Pcs
                             </div>
-                            <div class="col">
+                            <div class="col-2">
                                 <input type="text" class="auto-input">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class=" p-3 mb-3 lot">
-                    <div class="d-flex justify-content-end mb-3">
-                        <button class="btn btn-primary py-1" data-toggle="modal" data-target="#createLot">+ Lot</button>
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-6 col-md-3">
+                                    <div class="form-group mr-3">
+                                        <select name="" id="" class="form-control">
+                                            <option value="">--Gems Stone--</option>
+                                            <option value="">A Stone</option>
+                                            <option value="">B Stone</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="form-group mr-3">
+                                        <input type="text" placeholder="Pcs" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="form-group mr-3">
+                                        <input type="text" placeholder="Weight" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Price" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-end">
+                            <button class="btn btn-primary py-1" data-toggle="modal" data-target="#createLot">+ Lot</button>
+                        </div>
                     </div>
     
     
