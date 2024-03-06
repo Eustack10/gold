@@ -129,15 +129,15 @@
                                 <input type="text" class="manual-input">
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                                 
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                                 
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">        
+                                <input type="text" class="auto-input" disabled>        
                             </div>
                             <div class="col-2 text-right">
                                 {{-- 1234 --}}
@@ -149,7 +149,7 @@
                                 Net Gold Weight
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                             </div>
                             <div class="col">
                                 <input type="text" class="manual-input">
@@ -164,7 +164,7 @@
                                 
                             </div>
                             <div class="col-2 text-right">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                             </div>
                         </div>
 
@@ -173,7 +173,7 @@
                                 Decrease Gold Weight
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                             </div>
                             <div class="col">
                                 <input type="text" class="manual-input">
@@ -188,7 +188,7 @@
                                 
                             </div>
                             <div class="col-2 text-right">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                             </div>
                         </div>
                         <hr>
@@ -197,22 +197,22 @@
                                 Total Gold Weight
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                                 
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                                 
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                                 
                             </div>
                             <div class="col-2 text-right">
-                                {{-- <input type="text" class="auto-input"> --}}
+                                {{-- <input type="text" class="auto-input" disabled> --}}
                             </div>
                         </div>
 
@@ -221,22 +221,22 @@
                                 Total Gems Weight
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                                 
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                                 
                             </div>
                             <div class="col">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                                 
                             </div>
                             <div class="col-2 text-right">
-                                {{-- <input type="text" class="auto-input"> --}}
+                                {{-- <input type="text" class="auto-input" disabled> --}}
                             </div>
                         </div>
 
@@ -245,7 +245,7 @@
                                 Total Gems Pcs
                             </div>
                             <div class="col-2">
-                                <input type="text" class="auto-input">
+                                <input type="text" class="auto-input" disabled>
                             </div>
                         </div>
                     </div>
@@ -256,6 +256,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-10 d-flex flex-wrap">
                                     <div class="form-group mr-3">
+                                        <label for="">Gems Stone</label>
                                         <select name="" id="" class="form-control form-control-sm lot-input">
                                             <option value="">--Gems Stone--</option>
                                             <option value="">A Stone</option>
@@ -263,20 +264,23 @@
                                         </select>
                                     </div>
                                     <div class="form-group mr-3">
+                                        <label for="">Pcs</label>
                                         <input type="text" placeholder="Pcs" class="form-control form-control-sm lot-input">
                                     </div>
                                     <div class="form-group mr-3">
+                                        <label for="">Weight</label>
                                         <input type="text" placeholder="Weight" class="form-control form-control-sm lot-input">
                                     </div>
                                     <div class="form-group mr-3">
+                                        <label for="">Price</label>
                                         <input type="text" placeholder="Price" class="form-control form-control-sm lot-input">
                                     </div>
-                                    <div class="form-group mr-3">
+                                    <div class="form-group mr-3 d-flex align-items-end">
                                         <button class="btn btn-dark btn-sm w-100" style="width: 70px !important" data-toggle="modal" data-target="#createLot">+ Lot</button>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-2 d-flex justify-content-end align-items-center">
-                                    <button class="btn btn-sm btn-primary" style="transform: translateY(-10px)">Save</button>
+                                    <button class="btn btn-sm btn-primary" style="transform: translateY(10px)">Save</button>
                                 </div>
                             </div>
     
