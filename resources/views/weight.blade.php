@@ -272,11 +272,11 @@
                                         <input type="text" placeholder="Price" class="form-control form-control-sm lot-input">
                                     </div>
                                     <div class="form-group mr-3">
-                                        <button class="btn btn-primary btn-sm w-100" style="width: 70px !important" data-toggle="modal" data-target="#createLot">+ Lot</button>
+                                        <button class="btn btn-dark btn-sm w-100" style="width: 70px !important" data-toggle="modal" data-target="#createLot">+ Lot</button>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-2 d-flex justify-content-end align-items-center">
-                                    <button class="btn btn-sm btn-primary">Save</button>
+                                    <button class="btn btn-sm btn-primary" style="transform: translateY(-10px)">Save</button>
                                 </div>
                             </div>
     
