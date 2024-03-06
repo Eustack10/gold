@@ -57,8 +57,6 @@
     
 
 <script>
-    $('#example').DataTable( {
-    responsive: true
-} );
+    $('#example').DataTable( {searching: false, paging: false, info: false, responsive: true} );
 </script>
 @endsection

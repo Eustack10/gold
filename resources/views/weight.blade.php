@@ -1,7 +1,7 @@
 @extends('main')
 @section('content')
     
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-4">
         {{-- <div class="row">
             <div class="col-12">
                 <div class="card pt-4 pl-3 pr-2">
@@ -94,21 +94,27 @@
                             </div>
                         </div>
                     </div> --}}
+                    <div class="col-12 mb-2">
+                        <div class="form-group form-inline">
+                            <label for="" class="mr-2 font-weight-600">Price</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="row weight mb-4">
-                            <div class="col-3">
+                            <div class="col col-md-3">
                                 Weight
                             </div>
-                            <div class="col">
+                            <div class="col col-md">
                                 Gram
                             </div>
-                            <div class="col">
+                            <div class="col col-md">
                                 Kyat
                             </div>
-                            <div class="col">
+                            <div class="col col-md">
                                 Pae
                             </div>
-                            <div class="col">
+                            <div class="col col-md">
                                 Ywe
                             </div>
                             <div class="col-2 text-right">
@@ -246,37 +252,34 @@
                 </div>
                 <div class=" p-3 mb-3 lot">
                     <div class="row mb-3 align-items-center">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="row">
-                                <div class="col-6 col-md-3">
+                                <div class="col-12 col-md-10 d-flex flex-wrap">
                                     <div class="form-group mr-3">
-                                        <select name="" id="" class="form-control">
+                                        <select name="" id="" class="form-control form-control-sm lot-input">
                                             <option value="">--Gems Stone--</option>
                                             <option value="">A Stone</option>
                                             <option value="">B Stone</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-6 col-md-3">
                                     <div class="form-group mr-3">
-                                        <input type="text" placeholder="Pcs" class="form-control">
+                                        <input type="text" placeholder="Pcs" class="form-control form-control-sm lot-input">
                                     </div>
-                                </div>
-                                <div class="col-6 col-md-3">
                                     <div class="form-group mr-3">
-                                        <input type="text" placeholder="Weight" class="form-control">
+                                        <input type="text" placeholder="Weight" class="form-control form-control-sm lot-input">
+                                    </div>
+                                    <div class="form-group mr-3">
+                                        <input type="text" placeholder="Price" class="form-control form-control-sm lot-input">
+                                    </div>
+                                    <div class="form-group mr-3">
+                                        <button class="btn btn-primary btn-sm w-100" style="width: 70px !important" data-toggle="modal" data-target="#createLot">+ Lot</button>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Price" class="form-control">
-                                    </div>
+                                <div class="col-12 col-md-2 d-flex justify-content-end align-items-center">
+                                    <button class="btn btn-sm btn-primary">Save</button>
                                 </div>
                             </div>
     
-                        </div>
-                        <div class="col-md-4 d-flex justify-content-end">
-                            <button class="btn btn-primary py-1" data-toggle="modal" data-target="#createLot">+ Lot</button>
                         </div>
                     </div>
     
@@ -769,9 +772,8 @@
 
 @section('scripts')
 <script>
-    $('#example').DataTable( {
-    responsive: true
-} );
+    $('#example').DataTable( {searching: false, paging: false, info: false, responsive: true} );
+
 </script>
     <script>
         const select = el =>{
