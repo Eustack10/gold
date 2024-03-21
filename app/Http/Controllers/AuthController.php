@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -22,6 +23,8 @@ class AuthController extends Controller
         }
 
         $credential = $request->only(['email', 'password']);
+        $user = User::where('email', $credential['email'])->first();
+        dd(Auth::attempt(['email' => $user->email, 'password' => $request->password]));
         if(Auth::attempt($credential)){
             return redirect()->route('index');
         }else{

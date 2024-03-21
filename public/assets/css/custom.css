@@ -1,35 +1,38 @@
-.custom-input{
+.custom-input {
     width: 110px !important;
     font-size: 14px;
-    padding:3px 10px;
+    padding: 3px 10px;
     border-radius: 5px;
     border-width: 1px;
 }
-.custom-input:disabled{
-    background-color: rgba(0,0,0,0.07);
+.custom-input:disabled {
+    background-color: rgba(0, 0, 0, 0.07);
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-   -webkit-appearance: none;
+    -webkit-appearance: none;
+}
+.w-90 {
+    width: 90% !important;
 }
 
-.login{
+.login {
     margin-top: 100px;
-    background-color:  rgba(200, 188, 140, 0.1);
+    background-color: rgba(200, 188, 140, 0.1);
     padding: 20px;
     color: #bfbfbf;
     backdrop-filter: blur(5px);
     border-radius: 10px;
 }
 
-.login .form-control{
-    background-color: rgba(255,255,255,0.1) !important;
+.login .form-control {
+    background-color: rgba(255, 255, 255, 0.1) !important;
     border: none;
     box-shadow: none;
     color: #c9c9c9;
 }
-.login .btn{
+.login .btn {
     background-color: #c6ad78;
     border-color: #c6ad78;
     color: #000;
@@ -41,27 +44,27 @@ input::-webkit-inner-spin-button {
     width: 100%;
 }
 
-.lot-card{
+.lot-card {
     cursor: pointer;
     margin-bottom: 10px;
 }
-.lot-card-inner{
+.lot-card-inner {
     transition: all 0.15s ease;
 }
-.lot-card-inner.active{
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+.lot-card-inner.active {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border: 1px solid #fb6340 !important;
 }
-.div{
+.div {
     display: flex;
     flex-direction: column;
 }
-.field{
+.field {
     margin: 0;
     display: flex;
     align-items: flex-start;
 }
-.field p{
+.field p {
     margin: 0 !important;
     padding: 5px 10px !important;
     font-size: 14px;
@@ -73,30 +76,30 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: flex-start;
 }
-.field .form-group{
+.field .form-group {
     width: 100%;
     margin: 0;
     margin-bottom: 10px;
 }
-.field .form-control{
+.field .form-control {
     padding: 0 !important;
     line-height: normal;
     height: auto !important;
     padding: 5px !important;
 }
 
-.weight{
+.weight {
     font-size: 14px;
     font-weight: 600;
     /* margin-bottom: 20px; */
 }
 
-hr{
+hr {
     margin: 0 !important;
     margin: 20px 0 !important;
 }
 
-.auto-input{
+.auto-input {
     padding: 3px;
     width: 70px;
     border: 1px solid rgb(189, 189, 189);
@@ -105,7 +108,7 @@ hr{
     background-color: transparent;
     outline: none;
 }
-.manual-input{
+.manual-input {
     border: 1px solid black;
     text-align: right;
     padding: 3px;
@@ -114,15 +117,42 @@ hr{
     background-color: white;
     color: #344ca9;
 }
-.summary{
+.summary {
     font-size: 14px;
     font-weight: 600;
 }
 
-.lot{
-    border: 1.5px solid rgba(0,0,0,.2);
+.lot {
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
-.lot-input{
-    width: 100px !important;
+.tbl-lot td {
+    margin-top: 50px !important;
+}
+
+.weight-input-container::after {
+}
+@media only screen and (max-width: 600px) {
+    .w-m-100 {
+        width: 100% !important;
+    }
+    .weight .text-right {
+        text-align: left !important;
+    }
+    .auto-input {
+    }
+    .weight-input-container div {
+        width: 24% !important;
+    }
+
+    .lot-input div {
+        width: 30% !important;
+    }
+    .ml-sm-3 {
+        margin-left: 20px;
+    }
+    .top-input .w-100 {
+        width: 70% !important;
+        margin-top: 10px !important;
+    }
 }

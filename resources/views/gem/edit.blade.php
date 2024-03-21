@@ -52,6 +52,20 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-12">
+                        <div class="form-group m-0 mb-2">
+                            <label for="">Lots:</label>
+                            <select name="lots[]" class="form-control" multiple>
+                                <option disabled selected>--Select Lots--</option>
+                                @foreach ($lots as $lot)
+                                    <option value="{{ $lot->id }}">{{ $lot->name }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('lots'))
+                            <p class="text-danger">{{ $errors->first('lots') }}</p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12 py-4 d-flex justify-content-end">

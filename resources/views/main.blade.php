@@ -22,19 +22,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="{{asset('a_assets/argon/argon.min.css')}}" type="text/css">
+
 
     <!-- Google Tag Manager -->
 
     {{-- toastr --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.css?v=1') }}" type="text/css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/v/bs4-4.6.0/dt-2.0.1/fc-5.0.0/fh-4.0.0/r-3.0.0/sl-2.0.0/datatables.min.css" rel="stylesheet">
-{{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css"> --}}
 
- <style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs4-4.6.0/dt-2.0.1/fc-5.0.0/fh-4.0.0/r-3.0.0/sl-2.0.0/datatables.min.css"
+        rel="stylesheet">
+    {{--
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css"> --}}
+    <link rel="stylesheet" href="{{asset('a_assets/argon/argon.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css?v=1.1') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/image-uploader.min.css') }}" type="text/css">
+    <style>
         /* * {
             padding: 0;
             margin: 0;
@@ -70,6 +74,16 @@
         .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable,
         .select2-results__option--selectable {
             font-size: 10px !important;
+        }
+
+        .g-sidenav-pinned .sidenav {
+            max-width: 200px !important;
+        }
+
+        @media (min-width: 1200px) {
+            .g-sidenav-pinned .sidenav.fixed-left+.main-content {
+                margin-left: 200px;
+            }
         }
     </style>
 
@@ -147,6 +161,13 @@
                                         <a class="nav-link" href="{{ route('admin.gem.index') }}">
                                             <i class="ni ni-diamond text-primary sidenav-mini-icon"></i>
                                             <span class="sidenav-normal">Gems</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.lots.index') }}">
+                                            <i class="ni ni-diamond text-primary sidenav-mini-icon"></i>
+                                            <span class="sidenav-normal">Lots</span>
                                         </a>
                                     </li>
 
@@ -295,23 +316,23 @@
         <!-- Page content -->
         <div class="container-fluid" style="padding: 0 !important">
             <!-- Table -->
-            
-                {{-- Content --}}
-                @if(session()->has('success'))
-                <div class="alert alert-success">{{session()->get('success')}}</div>
-                @endif
-                @if(session()->has('error'))
-                <div class="alert alert-danger">{{session()->get('error')}}</div>
-                @endif
-                @if($errors->any())
-                @foreach ($errors->all() as $e )
-                <div class="alert alert-danger">{{$e}}</div>
-                @endforeach
-                @endif
-                @yield('content')
+
+            {{-- Content --}}
+            @if(session()->has('success'))
+            <div class="alert alert-success">{{session()->get('success')}}</div>
+            @endif
+            @if(session()->has('error'))
+            <div class="alert alert-danger">{{session()->get('error')}}</div>
+            @endif
+            {{-- @if($errors->any())
+            @foreach ($errors->all() as $e )
+            <div class="alert alert-danger">{{$e}}</div>
+            @endforeach
+            @endif --}}
+            @yield('content')
             {{-- <div class="card">
                 <div>
-                   
+
                 </div>
 
             </div> --}}
@@ -329,9 +350,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('/assets/js/tbl-responsive.js') }}"></script>
 
-<script src="https://cdn.datatables.net/v/bs4-4.6.0/dt-2.0.1/fc-5.0.0/fh-4.0.0/r-3.0.0/sl-2.0.0/datatables.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-    
+    <script src="https://cdn.datatables.net/v/bs4-4.6.0/dt-2.0.1/fc-5.0.0/fh-4.0.0/r-3.0.0/sl-2.0.0/datatables.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/js/image-uploader.min.js') }}"></script>
     {{-- ajax setup --}}
     <script>
         $.ajaxSetup({
@@ -351,6 +373,8 @@
     </script>
 
     @yield('scripts')
+
+
 </body>
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gems;
+use App\Models\Lots;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +24,8 @@ class GemController extends Controller
      */
     public function create()
     {
-        return view('gem.create');
+        $lots = Lots::all();
+        return view('gem.create', compact('lots'));
     }
 
     /**
@@ -36,18 +38,21 @@ class GemController extends Controller
             'name' => 'string|required',
             'unit' => 'string|required',
             'unit_price' => 'string|required',
+            'lots' => 'required',
+            'lots.*' => 'integer',
         ]);
 
         if($v->fails()){
             return back()->withErrors($v->errors());
         }
         try{
-            Gems::create([
+            $gems = Gems::create([
                 'code' => $request->code,
                 'name' => $request->name,
                 'unit' => $request->unit,
                 'unit_price' => $request->unit_price,
             ]);
+            $gems->lots()->attach($request->lots);
             return redirect()->route('admin.gem.index');
         }catch(Exception $e){
             return back();
@@ -68,7 +73,8 @@ class GemController extends Controller
     public function edit(string $id)
     {
         $data = Gems::findOrFail($id);
-        return view('gem.edit', compact('data'));
+        $lots = Lots::all();
+        return view('gem.edit', compact('data', 'lots'));
     }
 
     /**
@@ -81,6 +87,8 @@ class GemController extends Controller
             'name' => 'string|required',
             'unit' => 'string|required',
             'unit_price' => 'string|required',
+            'lots' => 'required',
+            'lots.*' => 'integer',
         ]);
 
         if($v->fails()){
@@ -93,8 +101,11 @@ class GemController extends Controller
                 'unit' => $request->unit,
                 'unit_price' => $request->unit_price,
             ]);
+            $gem = Gems::findOrFail($id);
+            $gem->lots()->sync($request->lots);
             return redirect()->route('admin.gem.index');
         }catch(Exception $e){
+            dd($e->getMessage());
             return back();
         }
     }

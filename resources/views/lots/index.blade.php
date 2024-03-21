@@ -2,20 +2,26 @@
 @section('content')
     
     <div class="container">
-    <h1 class="mb-5">Gem</h1>
+    <h1 class="mb-5">Lots</h1>
         <div class="mb-4 d-flex justify-content-end">
-            <a class="btn btn-primary py-1" href="{{ route('admin.gem.create') }}">+ Create</a>
+            <a class="btn btn-primary py-1" href="{{ route('admin.lots.create') }}">+ Create</a>
         </div>
-        @include('gem.delete')
+        @include('lots.delete')
         <table class="table" id="example">
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Gem</th>
                     <th>Code</th>
                     <th>Name</th>
+                    <th>Weight</th>
                     <th>Unit</th>
+                    <th>Gram</th>
                     <th>Unit Price</th>
-                    <th>Lots</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                    <th>Cert No</th>
+                    <th>Image</th>
                     <th>Action</th>
                 </tr>
                 <tbody>
@@ -23,20 +29,28 @@
                         
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $d->code }}</td>
-                        <td>{{ $d->name }}</td>
-                        <td>{{ $d->unit }}</td>
-                        <td>{{ $d->unit_price }}</td>
                         <td class="d-flex flex-column">
-                            @foreach ($d->lots as $lot)
-                                {{ $lot->name }}
+                            @foreach ($d->gems as $gem)
+                                {{ $gem->name }}
                             @endforeach
                         </td>
+                        <td>{{ $d->code }}</td>
+                        <td>{{ $d->name }}</td>
+                        <td>{{ $d->weight }}</td>
+                        <td>{{ $d->unit }}</td>
+                        <td>{{ $d->gram }}</td>
+                        <td>{{ $d->unit_price }}</td>
+                        <td>{{ $d->price }}</td>
+                        <td>{{ $d->amount }}</td>
+                        <td>{{ $d->cert_no }}</td>
                         <td>
-                            <a href="{{ route('admin.gem.edit', $d->id) }}" class="btn btn-warning btn-sm">
+                            <img src="{{ asset('lot_images/'.$d->image) }}" alt="" width="50px">
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.lots.edit', $d->id) }}" class="btn btn-warning btn-sm">
                                 Edit
                             </a>
-                            <button onclick="deleteGem({{$d->id}})" class="btn btn-sm btn-dark text-light">Delete</button>
+                            <button onclick="deletelots({{$d->id}})" class="btn btn-sm btn-dark text-light">Delete</button>
                         </td>
                     </tr>
                     @endforeach
@@ -53,10 +67,10 @@
     } );
     </script>
     <script>
-        function deleteGem(id){
+        function deletelots(id){
             $('#delete').modal('show');
             let delForm = document.querySelector('#delForm');
-            delForm.action = `{{ route('admin.gem.index') }}/${id}`;
+            delForm.action = `{{ route('admin.lots.index') }}/${id}`;
         }
     </script>
 

@@ -5,18 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gems extends Model
+class Lots extends Model
 {
     use HasFactory;
-    protected $table = 'gems';
+    protected $table = 'lots';
     protected $fillable = [
         'code',
         'name',
+        'weight',
         'unit',
+        'gram',
         'unit_price',
+        'price',
+        'amount',
+        'cert_no',
+        'image'
     ];
 
-    function lots(){
-        return $this->belongsToMany(Lots::class, 'gems_lots');
+    function gems(){
+        return $this->belongsToMany(Gems::class, 'gems_lots');
     }
 }
