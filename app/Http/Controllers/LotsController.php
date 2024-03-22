@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gems;
 use App\Models\Lots;
 use Exception;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class LotsController extends Controller
      */
     public function create()
     {
-        return view('lots.create');
+        $gems = Gems::all();
+        return view('lots.create', compact('gems'));
     }
 
     /**
@@ -29,6 +31,7 @@ class LotsController extends Controller
     public function store(Request $request)
     {
         $v = Validator::make($request->all(), [
+            'gems_id' => 'integer|required',
             'code' => 'string|required',
             'name' => 'string|required',
             'weight' => 'integer|required',
@@ -50,6 +53,7 @@ class LotsController extends Controller
             $image_name = $image->getClientOriginalName();
             $image->move(public_path()."/lot_images/", $image_name);
             Lots::create([
+                'gems_id' => $request->gems_id,
                 'code' => $request->code,
                 'name' => $request->name,
                 'weight' => $request->weight,
@@ -82,7 +86,8 @@ class LotsController extends Controller
     public function edit(string $id)
     {
         $data = Lots::findOrFail($id);
-        return view('lots.edit', compact('data'));
+        $gems = Gems::all();
+        return view('lots.edit', compact('data', 'gems'));
     }
 
     /**
@@ -91,6 +96,7 @@ class LotsController extends Controller
     public function update(Request $request, string $id)
     {
         $v = Validator::make($request->all(), [
+            'gems_id' => 'string|required',
             'code' => 'string|required',
             'name' => 'string|required',
             'weight' => 'integer|required',
@@ -116,6 +122,7 @@ class LotsController extends Controller
             }else{
                 $image_name = $lot->image;
             }
+                $lot->gems_id = $request->gems_id;
                 $lot->code = $request->code;
                 $lot->name = $request->name;
                 $lot->weight = $request->weight;

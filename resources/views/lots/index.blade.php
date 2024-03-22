@@ -30,9 +30,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td class="d-flex flex-column">
-                            @foreach ($d->gems as $gem)
-                                {{ $gem->name }}
-                            @endforeach
+                                {{ $d->gems->name }}
                         </td>
                         <td>{{ $d->code }}</td>
                         <td>{{ $d->name }}</td>

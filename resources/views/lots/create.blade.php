@@ -12,6 +12,23 @@
                     <div class="col-6">
                         <div class="form-group m-0 mb-2">
                             <label for="">Code:</label>
+                            <select name="gems_id" class="form-control">
+                                <option selected disabled>--Select Gem--</option>
+                                @foreach ($gems as $g)
+                                    <option value="{{ $g->id }}">
+                                        {{ $g->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('gems_id'))
+                            <p class="text-danger">{{ $errors->first('gems_id') }}</p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-group m-0 mb-2">
+                            <label for="">Code:</label>
                             <input type="text" name="code" class="form-control">
                             @if($errors->has('code'))
                             <p class="text-danger">{{ $errors->first('code') }}</p>
@@ -95,7 +112,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group m-0 mb-2">
                             <label for="">Image:</label>
                             <input type="file" name="image" class="form-control">

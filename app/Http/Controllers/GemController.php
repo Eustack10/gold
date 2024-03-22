@@ -38,8 +38,6 @@ class GemController extends Controller
             'name' => 'string|required',
             'unit' => 'string|required',
             'unit_price' => 'string|required',
-            'lots' => 'required',
-            'lots.*' => 'integer',
         ]);
 
         if($v->fails()){
@@ -52,7 +50,6 @@ class GemController extends Controller
                 'unit' => $request->unit,
                 'unit_price' => $request->unit_price,
             ]);
-            $gems->lots()->attach($request->lots);
             return redirect()->route('admin.gem.index');
         }catch(Exception $e){
             return back();
@@ -87,8 +84,6 @@ class GemController extends Controller
             'name' => 'string|required',
             'unit' => 'string|required',
             'unit_price' => 'string|required',
-            'lots' => 'required',
-            'lots.*' => 'integer',
         ]);
 
         if($v->fails()){
@@ -101,8 +96,6 @@ class GemController extends Controller
                 'unit' => $request->unit,
                 'unit_price' => $request->unit_price,
             ]);
-            $gem = Gems::findOrFail($id);
-            $gem->lots()->sync($request->lots);
             return redirect()->route('admin.gem.index');
         }catch(Exception $e){
             dd($e->getMessage());

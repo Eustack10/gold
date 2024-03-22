@@ -10,6 +10,23 @@
                 {{method_field('PUT')}}
                 @csrf
                 <div class="row">
+
+                    <div class="col-6">
+                        <div class="form-group m-0 mb-2">
+                            <label for="">Code:</label>
+                            <select name="gems_id" class="form-control">
+                                <option disabled>--Select Gem--</option>
+                                @foreach ($gems as $g)
+                                    <option value="{{ $g->id }}" {{ $data->gems_id === $g->id ? 'selected' : '' }}>
+                                        {{ $g->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('gems_id'))
+                            <p class="text-danger">{{ $errors->first('gems_id') }}</p>
+                            @endif
+                        </div>
+                    </div>
                     <div class="col-6">
                         <div class="form-group m-0 mb-2">
                             <label for="">Code:</label>
@@ -96,13 +113,16 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group m-0 mb-2">
                             <label for="">Image:</label>
                             <input type="file" name="image" class="form-control">
                             @if($errors->has('image'))
                             <p class="text-danger">{{ $errors->first('image') }}</p>
                             @endif
+                        </div>
+                        <div class="alert alert-info">
+                            <a target="_blank" href="{{ asset('lot_images/'.$data->image) }}" class="alert-link alert-sm">{{ asset('lot_images/'.$data->image) }}</a>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,23 @@
 import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
+import { useForm } from 'react-hook-form';
 
-export default function LotModal({show, handleClose, lots, selectedCheck}) {
-   
+export default function LotModal({show, handleClose, lots, selectedCheck, setSelectedCheck}) {
+   const [selectedLot, setSelectedLot] = useState([]);
+  const submitSelectedLot = (e) =>{
+    setSelectedCheck(selectedLot);
+    handleClose();
+  }
+  const handleChange = (e) => {
+      // Destructuring
+      const { value, checked } = e.target;
+      if (checked) {
+          setSelectedLot([...selectedLot, value]);
+      }
+      else {
+          setSelectedLot([...selectedLot.filter(val => val != value)]);
+      }
+  };
   return (
     <Modal show={show} onHide={handleClose} size='xl'>
         <Modal.Header>
@@ -10,7 +25,7 @@ export default function LotModal({show, handleClose, lots, selectedCheck}) {
         </Modal.Header>
         <Modal.Body>
 
-        <div class="table-responsive">
+        <form class="table-responsive" id='lot' onSubmit={submitSelectedLot}>
     
     <table class="table" id='exampleee'>
         <thead>
@@ -32,7 +47,9 @@ export default function LotModal({show, handleClose, lots, selectedCheck}) {
                 lots.map(val => (
                     <tr key={val.id}>
                         <td>
-                            <input type="checkbox" name="" id="" value={val.id}/>
+                            <input type="checkbox" name="lots_id" onClick={
+                                            handleChange
+                                        } value={val.name}/>
                         </td>
                         <td>{val.id}</td>
                         <td>{val.code}</td>
@@ -48,16 +65,15 @@ export default function LotModal({show, handleClose, lots, selectedCheck}) {
             }
         </tbody>
     </table>
-</div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+    <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" formTarget='lot' type='submit'>
             Save Changes
           </Button>
-        </Modal.Footer>
+</form>
+        </Modal.Body>
+       
     </Modal>
   )
 }

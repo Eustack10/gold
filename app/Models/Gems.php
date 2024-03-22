@@ -17,6 +17,6 @@ class Gems extends Model
     ];
 
     function lots(){
-        return $this->belongsToMany(Lots::class, 'gems_lots');
+        return $this->hasMany(Lots::class, 'gems_id', 'id');
     }
 }

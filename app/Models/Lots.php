@@ -11,6 +11,7 @@ class Lots extends Model
     protected $table = 'lots';
     protected $fillable = [
         'code',
+        'gems_id',
         'name',
         'weight',
         'unit',
@@ -23,6 +24,6 @@ class Lots extends Model
     ];
 
     function gems(){
-        return $this->belongsToMany(Gems::class, 'gems_lots');
+        return $this->belongsTo(Gems::class, 'gems_id', 'id');
     }
 }
