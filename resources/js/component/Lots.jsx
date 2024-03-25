@@ -1,21 +1,72 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import LotModal from "./LotModal";
 import { useForm } from "react-hook-form";
+import DataTable from 'react-data-table-component';
 const Lots = () => {
     const [lots, setLots] = useState([]);
     const [showLotModal, setShowLotModal] = useState(false);
-    const [selectedCheck, setSelectedCheck] = useState([]);
-    const [createdGems, setCreatedGems] = useState([]);
+    const [selectedLotRow, setSelectedLotRow] = useState([]);
+    const [selectedRow, setSelectedRow] = useState([]);
+    const [isEdit, setIsEdit] = useState(false);
+    const lotCols = [
+        {
+            name: 'ID',
+            selector: row => row.id,
+        },
+        {
+            name: 'Gem',
+            selector: row => row.gems_id,
+        },
+        {
+            name: 'Pcs',
+            selector: row => row.pcs,
+        },
+        {
+            name: 'Weight',
+            selector: row => row.weight,
+        },
+        {
+            name: 'Price',
+            selector: row => row.price,
+        },
+        {
+            name: 'Amount',
+            selector: row => row.amount,
+        },
+        {
+            name: 'Lots',
+            selector: row => row?.lots?.map(val => val.name).join(', '),
+        },
+        {
+            name: 'Action',
+            // selector: row => row.year,
+            cell: row => (<div className='d-flex flex-column'>
+                <button onClick={()=>{
+                    setSelectedRow(row)
+                    setIsEdit(true);
+                }} className="btn btn-sm btn-primary">
+                    Edit
+                </button>
+                <button className="btn btn-sm btn-danger" onClick={() => deleteCreatedGems(row.id)}>
+                    Delete
+                </button>
+            </div>)
+        },
+    ];
+  
     const {
         register,
         handleSubmit,
         reset,
+        setValue,
+        watch,
         formState: { errors },
       } = useForm();
-    const changeFn = e => {
-        const gem_name = e.target.value;
-        const gem_id = gems.find(val => val.name == gem_name)?.id
+
+    const changeFn = () => {
+        const gem_name = watch('gems_id');
+        const gem_id = gems.find(val => val.id == gem_name)?.id
         axios.get(`/api/get_lots_by_gem_id/${gem_id}`)
         .then((result) => {
             setLots(result.data);
@@ -23,15 +74,91 @@ const Lots = () => {
             console.log(err.result, 'xXXX');
         });
     }
-    const saveGem = (data) => {
-        setCreatedGems([...createdGems,data]);
-        setSelectedCheck([]);
-        reset();
 
+    useEffect(() => {
+        setValue('gems_id', selectedRow.gems_id);
+        setValue('pcs', selectedRow.pcs);
+        setValue('weight', selectedRow.weight);
+        setValue('price', selectedRow.price);
+        setValue('amount', selectedRow.amount);
+        // console.log(selectedRow.lots, 'PPOPOP');
+        setSelectedLotRow(selectedRow.lots);
+    }, [selectedRow]);
+
+    useEffect(()=>{
+        changeFn();
+    },[watch('gems_id')])
+    // const saveGem = (data) => {
+    //     setCreatedGems([...createdGems,data]);
+    //     setSelectedCheck([]);
+    //     reset();
+
+    // }
+
+    const deleteCreatedGems = async (id) => {
+        setLoading(true);
+        await axios.post('/api/delete_lots',{id})
+        .then((result) => {
+            setData(result.data);
+        }).catch((err) => {
+        }).finally(()=>{
+            setLoading(false);
+        });
     }
-
-    const deleteCreatedGems = (index) => {
-        setCreatedGems([...createdGems.filter((val, i) => i != index)])
+    // const saveLots = dataa => {
+    //     alert(123)
+    //     dataa.id = lots.length + 1;
+    //     dataa.lots = [];
+    //     // setLots(dataa);
+    //     data.push(dataa);
+    // }
+    const [data, setData] = useState([]);
+    const [show, setShow] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [perPage, setPerPage] = useState(10);
+    
+    useEffect(() =>{
+        fetchLots();
+    }, []);
+    const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+    const saveLots = async (data) => {
+        setLoading(true);
+        let url = isEdit ? '/api/update_lots' : '/api/set_lots';
+        if(isEdit){
+            data.id = selectedRow.id;
+        }
+        data.lots = selectedLotRow?.map( val => val.id);
+        await axios.post(url,data)
+        .then((result) => {
+            if(result.data){
+                setData(result.data);
+            }
+        }).catch((err) => {
+            console.log(err, 'PPPP');
+        }).finally(()=>{
+            setLoading(false);
+            restForm();
+        });
+    }
+    const fetchLots = async () => {
+        setLoading(true);
+        await axios.post('/api/get_lots',data)
+        .then((result) => {
+            setData(result.data);            
+        }).catch((err) => {
+            console.log(err, 'PPPP');
+        }).finally(()=>{
+            setLoading(false);
+        });
+    };
+    const restForm = ()=>{
+        setValue('gems_id', '');
+        setValue('pcs', '');
+        setValue('weight', '');
+        setValue('price', '');
+        setValue('amount', '');
+        setSelectedLotRow([]);
+        setSelectedRow([]);
     }
   return (
     <>
@@ -40,19 +167,17 @@ const Lots = () => {
         <div className="">
             <b>Manage Lot</b>
         </div>
-        <form onSubmit={handleSubmit(saveGem)} id='createdGem' className=" d-flex flex-wrap mt-2 lot-input">
+        <form onSubmit={handleSubmit(saveLots)} id='createdGem' className=" d-flex flex-wrap mt-2 lot-input">
             <div style={{ width: "15%" }}>
                 <small className="">Gemstone</small>
                 <select
                     className="w-90 btn btn-sm border border-dark bg-white p-0"
-                    {...register('gems_id', {
-                        onChange: changeFn
-                    })}
+                    {...register('gems_id')}
                 >
                     <option disabled selected>--Select--</option>
                     {
                         gems.map(val => (
-                            <option key={val.id} value={val.name}>{val.name}</option>
+                            <option key={val.id} value={val.id}>{val.name}</option>
                         ))
                     }
                 </select>
@@ -107,22 +232,39 @@ const Lots = () => {
             </div>
             <div className="ml-2 w-auto saveLot">
                 <br />
-                <button onClick={()=>setShowLotModal(true)} type='button' className="btn  btn-sm btn-outline-dark">
+                <button onClick={()=>{setShowLotModal(true)}} type='button' className="btn btn-sm btn-outline-dark">
                     + Lot
                 </button>
+                {
+                    isEdit ? 
+                    <>
+
+                    <button className="btn btn-sm btn-dark" formTarget='createdGem'>
+                    Update
+                    </button>
+
+                    <button className="btn btn-sm btn-dark" type='button' onClick={()=>{
+                        restForm(); setIsEdit(false);
+                    }}>
+                    Cancel
+                    </button>
+                    </>
+                :
                 <button className="btn btn-sm btn-dark" formTarget='createdGem'>
                     Save
                 </button>
+                }
+                
             </div>
             
         </form>
         <LotModal
-                show={showLotModal}
-                handleClose={()=>setShowLotModal(false)}
-                selectedCheck={selectedCheck}
-                setSelectedCheck={setSelectedCheck}
-                lots={lots} />
-        <table
+            show={showLotModal}
+            handleClose={()=>setShowLotModal(false)}
+            selectedLotRow={selectedLotRow}
+            setSelectedLotRow={setSelectedLotRow}
+            lots={lots} />
+        {/* <table
             className="table"
             id="examplee"
             style={{ width: "100%" }}
@@ -165,7 +307,16 @@ const Lots = () => {
                     ))
                 }
             </tbody>
-        </table>
+        </table> */}
+        <DataTable
+            //title="Data"
+            expandableRows
+		    expandableRowsComponent={ExpandedComponent}
+            columns={lotCols}
+            data={data}
+            progressPending={loading}
+            pagination
+        />
     </div>
     </>
   )

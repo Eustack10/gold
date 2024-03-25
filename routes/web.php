@@ -52,6 +52,10 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix' => 'api'], function () {
     Route::get('/get_lots_by_gem_id/{id}', [JelleweryApi::class, 'getLotsByGemId']);
+    Route::post('/set_lots', [JelleweryApi::class, 'setLots']);
+    Route::post('/get_lots', [JelleweryApi::class, 'getLots']);
+    Route::post('/update_lots', [JelleweryApi::class, 'updateLots']);
+    Route::post('/delete_lots', [JelleweryApi::class, 'deleteLots']);
 });
 
 // Route::get('/test', function(){

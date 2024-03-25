@@ -26,4 +26,8 @@ class Lots extends Model
     function gems(){
         return $this->belongsTo(Gems::class, 'gems_id', 'id');
     }
+
+    function jellewery(){
+        return $this->belongsToMany(Jellewery::class, 'jellewery_lots');
+    }
 }

@@ -1,23 +1,53 @@
 import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
+import DataTable from 'react-data-table-component';
 import { useForm } from 'react-hook-form';
 
-export default function LotModal({show, handleClose, lots, selectedCheck, setSelectedCheck}) {
-   const [selectedLot, setSelectedLot] = useState([]);
-  const submitSelectedLot = (e) =>{
-    setSelectedCheck(selectedLot);
-    handleClose();
-  }
-  const handleChange = (e) => {
-      // Destructuring
-      const { value, checked } = e.target;
-      if (checked) {
-          setSelectedLot([...selectedLot, value]);
-      }
-      else {
-          setSelectedLot([...selectedLot.filter(val => val != value)]);
-      }
+export default function LotModal({show, handleClose, lots, selectedLotRow, setSelectedLotRow}) {
+  const handleChange = (selectedRow) => {
+      setSelectedLotRow(selectedRow.selectedRows);
   };
+
+  const columns = [
+    {
+        name: 'ID',
+        selector: row => row.id,
+    },
+    {
+        name: 'Code',
+        selector: row => row.code,
+    },
+    {
+        name: 'Name',
+        selector: row => row.name,
+    },
+    {
+        name: 'Weight',
+        selector: row => row.weight,
+    },
+    {
+        name: 'Unit',
+        selector: row => row.unit,
+    },
+    {
+        name: 'Gram',
+        selector: row => row.gram,
+    },
+    {
+        name: 'Unit Price',
+        selector: row => row.unit_price,
+    },
+    {
+        name: 'Price Amount',
+        selector: row => row.price_amount,
+    },
+    {
+        name: 'Cert No.',
+        selector: row => row.cert_no,
+    },
+];
+
+const selectedRows = row => selectedLotRow.map(val => val.id).includes(row.id);
   return (
     <Modal show={show} onHide={handleClose} size='xl'>
         <Modal.Header>
@@ -25,53 +55,19 @@ export default function LotModal({show, handleClose, lots, selectedCheck, setSel
         </Modal.Header>
         <Modal.Body>
 
-        <form class="table-responsive" id='lot' onSubmit={submitSelectedLot}>
-    
-    <table class="table" id='exampleee'>
-        <thead>
-            <tr>
-                <td>#</td>
-                <td>ID</td>
-                <td>Code</td>
-                <td>Name</td>
-                <td>Weight</td>
-                <td>Unit</td>
-                <td>Gram</td>
-                <td>Unit Price</td>
-                <td>Price</td>
-                <td>Amount</td>
-            </tr>
-        </thead>
-        <tbody>
-            {
-                lots.map(val => (
-                    <tr key={val.id}>
-                        <td>
-                            <input type="checkbox" name="lots_id" onClick={
-                                            handleChange
-                                        } value={val.name}/>
-                        </td>
-                        <td>{val.id}</td>
-                        <td>{val.code}</td>
-                        <td>{val.name}</td>
-                        <td>{val.weight}</td>
-                        <td>{val.unit}</td>
-                        <td>{val.gram}</td>
-                        <td>{val.unit_price}</td>
-                        <td>{val.price}</td>
-                        <td>{val.amount}</td>
-                    </tr>
-                ))
-            }
-        </tbody>
-    </table>
-    <Button variant="secondary" onClick={handleClose}>
+        <DataTable
+      columns={columns}
+      data={lots}
+      selectableRows
+      onSelectedRowsChange={handleChange}
+      // selectableRowSelected={selectedRows}
+    />
+          <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" formTarget='lot' type='submit'>
+          <Button variant="primary" onClick={handleClose} formTarget='lot' type='submit'>
             Save Changes
           </Button>
-</form>
         </Modal.Body>
        
     </Modal>
