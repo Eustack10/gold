@@ -25,14 +25,17 @@ const Lots = () => {
         {
             name: 'Weight',
             selector: row => row.weight,
+            hide: 'sm'
         },
         {
             name: 'Price',
             selector: row => row.price,
+            hide: 'sm'
         },
         {
             name: 'Amount',
             selector: row => row.amount,
+            hide: 'sm'
         },
         // {
         //     name: 'Lots',
@@ -121,26 +124,39 @@ const Lots = () => {
         fetchLots();
     }, []);
     const ExpandedComponent = ({ data }) => (
-        <div className='d-flex ml-5'>
-            <div className='d-flex flex-column border p-3 justify-content-between gap-2'>
-                <div><b>Lots</b></div>
-                <div>{data.lots?.map(val => val.name)?.join(',')}</div>
+        <div className='d-flex ml-5 flex-column pl-3'>
+            <div className='row border d-lg-none'>
+                <div className='col-4 col-lg-2'>Weight</div>
+                <div className='col'>{data?.weight}</div>
             </div>
 
-            <div className='d-flex flex-column border p-3 justify-content-between gap-2'>
-                <div><b>Action</b></div>
-                <div>
-                <div className='d-flex flex-column'>
-                <button onClick={()=>{
+            <div className='row border d-lg-none'>
+                <div className='col-4 col-lg-2'>Price</div>
+                <div className='col'>{data?.price}</div>
+            </div>
+
+            <div className='row border d-lg-none'>
+                <div className='col-4 col-lg-2'>Amount</div>
+                <div className='col'>{data?.amount}</div>
+            </div>
+
+            <div className='row border'>
+                <div className='col-4 col-lg-2'>Lots</div>
+                <div className='col'>{data.lots?.map(val => val.name)?.join(',')}</div>
+            </div>
+
+            <div className='row border'>
+                <div className='col-4 col-lg-2'>Action</div>
+                <div className='col d-flex flex-column'>
+                    <button onClick={()=>{
                     setSelectedRow(data)
                     setIsEdit(true);
-                    }} className="btn btn-sm btn-primary">
+                    }} className="btn btn-sm btn-primary" style={{width:'fit-content'}}>
                         Edit
                     </button>
-                    <button className="btn btn-sm btn-danger" onClick={() => deleteCreatedGems(data.id)}>
+                    <button className="btn btn-sm btn-danger" style={{width:'fit-content'}} onClick={() => deleteCreatedGems(data.id)}>
                         Delete
                     </button>
-                </div>
                 </div>
             </div>
         </div>
@@ -335,11 +351,11 @@ const Lots = () => {
         <DataTable
             //title="Data"
             expandableRows
+            pagination={false}
 		    expandableRowsComponent={ExpandedComponent}
             columns={lotCols}
             data={data}
             progressPending={loading}
-            pagination
         />
     </div>
     </>

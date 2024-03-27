@@ -24,29 +24,71 @@ export default function LotModal({show, handleClose, lots, selectedLotRow, setSe
     {
         name: 'Weight',
         selector: row => row.weight,
+        hide: 'sm'
     },
     {
         name: 'Unit',
         selector: row => row.unit,
+        hide: 'sm'
     },
     {
         name: 'Gram',
         selector: row => row.gram,
+        hide: 'sm'
     },
     {
         name: 'Unit Price',
         selector: row => row.unit_price,
+        hide: 'sm'
     },
     {
         name: 'Price Amount',
         selector: row => row.price_amount,
+        hide: 'sm'
     },
     {
         name: 'Cert No.',
         selector: row => row.cert_no,
+        hide: 'sm'
     },
 ];
 
+const ExpandedComponent = ({ data }) => (
+  <div className='d-flex ml-5 flex-column pl-3 d-lg-none'>
+      <div className='row border d-lg-none'>
+          <div className='col-4 col-lg-2'>Weight</div>
+          <div className='col'>{data?.weight}</div>
+      </div>
+
+      <div className='row border d-lg-none'>
+          <div className='col-4 col-lg-2'>Unit</div>
+          <div className='col'>{data?.unit}</div>
+      </div>
+
+      <div className='row border d-lg-none'>
+          <div className='col-4 col-lg-2'>Gram</div>
+          <div className='col'>{data?.gram}</div>
+      </div>
+
+      <div className='row border'>
+          <div className='col-4 col-lg-2'>Unit Price</div>
+          <div className='col'>{data?.unit_price}</div>
+      </div>
+
+
+      <div className='row border'>
+          <div className='col-4 col-lg-2'>Price Amount</div>
+          <div className='col'>{data?.price_amount}</div>
+      </div>
+
+
+      <div className='row border'>
+          <div className='col-4 col-lg-2'>Cert No.</div>
+          <div className='col'>{data?.cert_no}</div>
+      </div>
+
+  </div>
+);
 const selectedRows = row => selectedLotRow.map(val => val.id).includes(row.id);
   return (
     <Modal show={show} onHide={handleClose} size='xl'>
@@ -60,6 +102,10 @@ const selectedRows = row => selectedLotRow.map(val => val.id).includes(row.id);
       data={lots}
       selectableRows
       onSelectedRowsChange={handleChange}
+
+      expandableRows
+      pagination={false}
+      expandableRowsComponent={ExpandedComponent}
       // selectableRowSelected={selectedRows}
     />
           <Button variant="secondary" onClick={handleClose}>
