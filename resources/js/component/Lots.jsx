@@ -34,25 +34,25 @@ const Lots = () => {
             name: 'Amount',
             selector: row => row.amount,
         },
-        {
-            name: 'Lots',
-            selector: row => row?.lots?.map(val => val.name).join(', '),
-        },
-        {
-            name: 'Action',
-            // selector: row => row.year,
-            cell: row => (<div className='d-flex flex-column'>
-                <button onClick={()=>{
-                    setSelectedRow(row)
-                    setIsEdit(true);
-                }} className="btn btn-sm btn-primary">
-                    Edit
-                </button>
-                <button className="btn btn-sm btn-danger" onClick={() => deleteCreatedGems(row.id)}>
-                    Delete
-                </button>
-            </div>)
-        },
+        // {
+        //     name: 'Lots',
+        //     selector: row => row?.lots?.map(val => val.name).join(', '),
+        // },
+        // {
+        //     name: 'Action',
+        //     // selector: row => row.year,
+        //     cell: row => (<div className='d-flex flex-column'>
+        //         <button onClick={()=>{
+        //             setSelectedRow(row)
+        //             setIsEdit(true);
+        //         }} className="btn btn-sm btn-primary">
+        //             Edit
+        //         </button>
+        //         <button className="btn btn-sm btn-danger" onClick={() => deleteCreatedGems(row.id)}>
+        //             Delete
+        //         </button>
+        //     </div>)
+        // },
     ];
   
     const {
@@ -120,7 +120,31 @@ const Lots = () => {
     useEffect(() =>{
         fetchLots();
     }, []);
-    const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+    const ExpandedComponent = ({ data }) => (
+        <div className='d-flex ml-5'>
+            <div className='d-flex flex-column border p-3 justify-content-between gap-2'>
+                <div><b>Lots</b></div>
+                <div>{data.lots?.map(val => val.name)?.join(',')}</div>
+            </div>
+
+            <div className='d-flex flex-column border p-3 justify-content-between gap-2'>
+                <div><b>Action</b></div>
+                <div>
+                <div className='d-flex flex-column'>
+                <button onClick={()=>{
+                    setSelectedRow(data)
+                    setIsEdit(true);
+                    }} className="btn btn-sm btn-primary">
+                        Edit
+                    </button>
+                    <button className="btn btn-sm btn-danger" onClick={() => deleteCreatedGems(data.id)}>
+                        Delete
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+    );
     const saveLots = async (data) => {
         setLoading(true);
         let url = isEdit ? '/api/update_lots' : '/api/set_lots';
